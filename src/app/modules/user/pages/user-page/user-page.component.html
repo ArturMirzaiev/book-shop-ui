@@ -1,0 +1,72 @@
+<app-navigation-user></app-navigation-user>
+
+<div class="container">
+
+    <div class="options-panel">
+
+        <div class="option-header">
+            <h3>Сhoose what you like</h3>
+        </div>
+
+        <div class="option-header">
+            <h4>Categories</h4>
+            <a routerLink="/books" class="reset-anchor">reset</a>
+        </div>
+
+        <div class="wrapper-categories">
+
+            <div class="container-categories" *ngIf="!isLoadingPanel">
+
+                <app-category-panel *ngFor="let category of categories" [category]="category">
+                </app-category-panel>
+
+            </div>
+
+            <div *ngIf="isLoadingPanel">
+                <h3>Loading...</h3>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="main-content">
+
+        <label class="label">Search:
+            <input type="text" class="searchInput" placeholder="Enter a book title..." [(ngModel)]="searchBook">
+
+            <select name="" id="" class="select" [(ngModel)]="selected">
+                <option value="default">default</option>
+                <option value="a-z">a-z</option>
+                <option value="z-a">z-a</option>
+                <option value="low-high">low-high</option>
+                <option value="high-low">high-low</option>
+            </select>
+        </label>
+
+
+        <div class="books-container">
+
+
+            <div class="books-wrapper">
+                <app-book-item
+                    *ngFor="let book of books 
+                    | routeBook:routeCategoryId 
+                    | filterBook2:searchBook:filterMetadata
+                    | sortSelect:selected"
+                    [book]="book">
+                </app-book-item>
+            </div>
+
+            <div>
+                <h3>Found resuls: {{filterMetadata.count}}</h3>
+                <div *ngIf="isLoadingContent">
+                    <h3>Loading...</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

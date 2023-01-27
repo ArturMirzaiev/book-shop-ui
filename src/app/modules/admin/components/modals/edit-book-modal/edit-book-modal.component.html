@@ -1,0 +1,120 @@
+<div class="backdrop">
+
+  <div class="modal">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <h2>Edit form book</h2>
+      <hr />
+
+      <div class="formcontrol">
+        <label>Title</label>
+        <input type="text" formControlName="title">
+        <small style="color: red; font-size: 14px" *ngIf="editForm.get('title').dirty && editForm.hasError('required', 'title')">
+          Enter a title field...
+        </small>
+      </div>
+
+      <div class="formcontrol">
+        <label>Image Url</label>
+        <input type="text" formControlName="imageUrl">
+        <small style="color: red; font-size: 14px" *ngIf="editForm.get('imageUrl').dirty && editForm.hasError('required', 'imageUrl')">
+          Enter Image Url field...
+        </small>
+      </div>
+
+      <div class="formcontrol">
+
+        <label>Authors</label>
+        <input type="text" [(ngModel)]="searchAuthors" [ngModelOptions]="{standalone: true}"
+          placeholder="Enter text to search..." />
+
+          <div class="column">
+
+            <div class="list-authors" *ngIf="searchAuthors">
+
+              <div class="localButtons">
+                <div *ngFor="let author of authors | filterAuthor: searchAuthors" class="list-item"
+                  (click)="addLocalAuthor(author)">{{author.fullName}}
+                </div><br />
+              </div>
+
+              <div class="local-items" *ngIf="localAuthors">
+                <label style="font-size: 20px">Choisen authors: </label>
+                <div *ngFor="let aut of localAuthors" class="remove-local-item">
+                  <label style="text-decoration: underline" for="">{{aut.fullName}}</label>
+                  <button class="btn" (click)="removeLocalAuthor(aut)">-</button>
+                </div>
+              </div>
+              
+            </div>
+    
+            
+          </div>
+          </div>
+        
+
+      <div class="formcontrol">
+
+        <label>Categories</label>
+        <input type="text" [(ngModel)]="searchCategories" [ngModelOptions]="{standalone: true}"
+          placeholder="Enter text to search..." />
+
+        <div class="list-authors" *ngIf="searchCategories">
+
+          <div class="localButtons">
+            <div *ngFor="let category of categories | filterCategory:searchCategories" class="list-item"
+              (click)="addLocalCategory(category)">{{category.name}}
+            </div><br />
+          </div>
+          
+          <div class="local-items" *ngIf="localCategories">
+            <label style="font-size: 20px">Choisen categories: </label>
+            <div *ngFor="let cat of localCategories" class="remove-local-item">
+              <label style="text-decoration: underline">{{cat.name}}</label>
+              <button class="btn" (click)="removeLocalCategory(cat)">-</button>
+            </div>
+          </div>
+
+
+        </div>
+
+        
+
+      </div>
+
+
+      <div class="formcontrols">
+        <div class="formcontrol">
+          <label>Price</label>
+          <input type="number" formControlName="price">
+          <small style="color: red; font-size: 14px" *ngIf="editForm.get('price').dirty && editForm.hasError('required', 'price')">
+            Enter price field...
+          </small>
+        </div>
+        <div class="formcontrol">
+          <label>Quantity</label>
+          <input type="number" formControlName="quantity">
+          <small style="color: red; font-size: 14px" *ngIf="editForm.get('quantity').dirty && editForm.hasError('required', 'quantity')">
+            Enter quantity field...
+          </small>
+        </div>
+      </div>
+      <div class="formcontrol">
+        <label>Description</label>
+        <textarea type="text"
+          formControlName="description">ContentContentContent ContentContentContentContenontentConten tContenontentContentCon tenontentContentContenonten tContentCon tenontentContentContentContentContentCon tentContentCon tentContent</textarea>
+          <small style="color: red; font-size: 14px" *ngIf="editForm.get('description').dirty && editForm.hasError('required', 'description')">
+            Enter description field...
+          </small>
+      </div>
+
+      <div class="buttons">
+        <button (click)="close.emit()">Close</button>
+        <button type="submit" *ngIf="this.editForm.valid">Save changes</button>
+        <div *ngIf="this.editForm.invalid" style="border: 1px solid gray; padding: 3px; background-color: dimgrey; width: 150px; text-align: center; font-size: 20px">Fix errors</div>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

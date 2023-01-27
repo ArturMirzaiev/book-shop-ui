@@ -1,0 +1,53 @@
+.book-item{
+    border: 1px solid gray;
+    width: 80%;
+    padding: 20px;
+    margin: 10px auto;
+    display: flex;
+}
+
+.book-img img{
+    height: 300px;
+    width: 250px;
+    margin: 0 20px 0 0;
+}
+
+h2{
+    margin: 0;
+}
+
+.header-details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.book-details{
+    width: 100%;
+}
+
+.buttons button{
+    padding: 3px;
+    border: 1px solid gray;
+    width: 100px;
+    border-radius: 5%;
+    color: black;
+    background-color:white;
+    font-size: 18px;
+}
+
+.buttons button:hover{
+    cursor: pointer;
+    background-color: gray;
+    transform: .4s;
+}
+
+.labels{
+    margin: 6px 0;
+}
+
+.labels label{
+    font-size: large;
+}

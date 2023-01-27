@@ -1,0 +1,109 @@
+.books-container {
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px 10px;
+    border: 1px solid gray;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column-reverse;
+}
+
+.books-wrapper{
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px 10px;
+    border: 1px solid gray;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.options-panel {
+    width: 20%;
+    padding: 5px 5px 5px 10px;
+}
+
+.options-panel img{
+    width: 100%;
+}
+
+.option-header{
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-content {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+.searchInput {
+    width: 30%;
+    padding: 3px;
+    font-size: 18px;
+}
+
+.select{
+    padding: 3px;
+    margin: 0 5px;
+    font-size: 18px;
+}
+
+.main-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 10px;
+}
+
+h3 {
+    margin: 10px 5px;
+}
+
+h4{
+    margin: 5px;
+}
+
+.reset-anchor{
+    font-size: 16px;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border:1px solid gray;
+}
+
+.reset-anchor:hover{
+    color: white;
+    background-color: brown;
+}
+
+.wrapper-categories{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px;
+}
+
+.container-categories{
+    padding: 0;
+    margin: 0;
+}
+
+.label{
+    font-size: 20px;
+}

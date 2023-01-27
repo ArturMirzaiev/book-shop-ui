@@ -1,0 +1,41 @@
+<div class="book-item">
+
+  <div class="book-img">
+      <img src="{{book.imageUrl}}"
+          alt="">
+  </div>
+  <div class="book-details">
+      <div class="header-details">
+          <div class="price-quantity">
+              <strong>Price: {{book.price}}$ | Quantity: {{book.quantity}} pcs.</strong>
+          </div>
+          <div class="buttons">
+            <button (click)="warnModal = true">Delete</button>
+            <button (click)="modal = true">Edit</button>
+          </div>
+      </div>
+      <h2>{{book.title}}</h2>
+      <div class="labels">
+        <label *ngFor="let aut of book.authors; let i = index">{{aut.fullName}}<label *ngIf="i != book.authors.length - 1">, </label></label><br/>
+        <label *ngFor="let cat of book.categories; let i = index">{{cat.name}}<label *ngIf="i != book.categories.length - 1">, </label></label>
+      </div><hr />
+      <p>{{book.description}}</p>
+  </div>
+
+
+  <app-edit-book-modal 
+    *ngIf="modal == true" 
+    [book]="book" 
+    [categories]="categories"
+    [authors]="authors"
+    (close)="modal = false"
+    (updatedBookEvent)="this.book = $event"
+     ></app-edit-book-modal>
+     
+  <app-warn-modal
+    *ngIf="warnModal == true" 
+    [book]="book"
+    (close)="warnModal = false"
+    (removedBookEvent)="removeBook()"
+    ></app-warn-modal>
+</div>

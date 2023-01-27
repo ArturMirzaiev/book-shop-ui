@@ -1,0 +1,66 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.wrap{
+    border: 1px solid gray;
+    padding: 20px;
+
+}
+
+.btn{
+    padding: 5px;
+    width: 40%;
+    border: 1px solid gray;
+}
+
+.buttons{
+    text-align: center;
+    margin: 10px 0 0;
+}
+
+.buttons button{
+    font-size: 20px;
+    padding: 6px;
+    width: 50%;
+}
+
+button:hover{
+    background-color: gray;
+    cursor: pointer;
+    transition: .3s;
+}
+
+h2{
+    text-align: center;
+}
+
+
+
+.register{
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.register a small{
+    margin: 0;
+    padding: 0;
+}
+
+.formcontrol{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    min-width: 300px;
+}
+
+.formcontrol input{
+    border:1px solid gray;
+    padding: 6px 8px;
+    font-size: 20px;
+}

@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="wrap">
+
+    <div class="header-wrap">
+      <h2>Sign Up</h2>
+    </div>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+      <div class="formcontrol">
+        <label>First Name</label>
+        <input type="text" formControlName="firstname" />
+        <small style="color: red; font-size: 14px"
+          *ngIf="signupForm.get('firstname').touched && signupForm.hasError('required', 'firstname')">
+          Enter first name field...
+        </small>
+      </div>
+
+      <div class="formcontrol">
+        <label>Last Name</label>
+        <input type="password" formControlName="lastname" />
+        <small style="color: red; font-size: 14px"
+          *ngIf="signupForm.get('lastname').touched && signupForm.hasError('required', 'lastname')">
+          Enter last name field...
+        </small>
+      </div>
+
+      <div class="formcontrol">
+        <label>Username</label>
+        <input type="text" formControlName="username" />
+        <small style="color: red; font-size: 14px"
+          *ngIf="signupForm.get('username').touched && signupForm.hasError('required', 'username')">
+          Enter username field...
+        </small>
+      </div>
+
+      <div class="formcontrol">
+        <label>Email</label>
+        <input type="email" formControlName="email" />
+        <small style="color: red; font-size: 14px"
+          *ngIf="signupForm.get('email').touched && signupForm.hasError('required', 'email')">
+          Enter email field...
+        </small>
+        <small style="color: red; font-size: 14px"
+        *ngIf="signupForm.get('email').touched && signupForm.hasError('email', 'email')">
+          Enter a valid email</small>
+      </div>
+
+      <div class="formcontrol">
+        <label>Password</label>
+        <input type="password" formControlName="password"/>
+        <small style="color: red; font-size: 14px"
+          *ngIf="signupForm.get('password').touched && signupForm.hasError('required', 'password')">
+          Enter password field...
+        </small>
+        <small style="color: red; font-size: 14px"
+          *ngIf="signupForm.get('password').touched && password.getError('minlength')">
+          Password must be more than 5 characters
+        </small>
+      </div>
+
+      <div class="register">
+        <a routerLink="/login"><small>Already have an account?</small></a>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="btn" [disabled]="signupForm.invalid">Sign Up</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+  
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">Login</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="loginForm">
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input type="text" placeholder="Username" formControlName="username" />
+                </div>
+              </div>
+              <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username')" class="text-danger">*Username is required</small>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-lock p-2"></span>
+                  <input [type]="type" placeholder="Password" formControlName="password" />
+                  <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                </div>
+              </div>
+              <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger"  class="text-danger">*Password is required</small>
+              <div class="form-inline fr mt-4">
+                <a id="forget" class="font-weight-bold">Forget Password?</a>
+              </div>
+              <button (click)="onSubmit()" [disabled]="loginForm.invalid" type="submit" class="btn btn-primary mt-4 w-100">Login</button>
+              <div class="text-center pt-4 text-muted">Don`t have account? <a id="forget" routerLink="/signup">Sign Up</a></div>
+            </form>
+          </div>
+          <div class="mx-3 my-2 py-2 bordert">
+            <div class="text-center py-3">
+              <a href="https://www.facebook.com/" class="px-2"><img src="data:image/png;base64,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" alt=""></a>
+              <a href="https://www.youtube.com/" class="px-2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS66uZVwAERIuTwiqcZ_lYLZlUdTRK4jHJoSQ&usqp=CAU" alt=""></a>
+              <a href="https://www.google.com/" class="px-2"><img src="data:image/png;base64,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" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->
+
+
+
+
+
+
+
+
+<!--
+
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">Sign Up</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="signupForm">
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input type="text" placeholder="FirstName" formControlName="firstname" />
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input type="text" placeholder="LastName" formControlName="lastname">
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input type="text" placeholder="Email" formControlName="email">
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-user p-2"></span>
+                  <input type="text" placeholder="Username"  formControlName="username">
+                </div>
+              </div>
+              <div class="form-group pt-3">
+                <div class="input-field">
+                  <span class="fa fa-lock p-2"></span>
+                  <input [type]="type" placeholder="Password"  formControlName="password">
+                  <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                </div>
+              </div>
+              <button (click)="onSubmit()" [disabled]="signupForm.invalid" type="submit" class="btn btn-primary mt-4 w-100">Sign up</button>
+              <div class="text-center pt-4 text-muted">Already have account? <a id="forget"
+                  routerLink="/login">Login</a></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+-->
