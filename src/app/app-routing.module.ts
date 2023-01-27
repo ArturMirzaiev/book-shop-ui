@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminNavigationComponent } from './modules/admin/components/admin-navigation/admin-navigation.component';
 import { AddBookComponent } from './modules/admin/pages/add-book/add-book.component';
@@ -20,12 +21,12 @@ const routes: Routes = [
   { path: 'books/:id', component: UserPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'profile', component: UserProfilePageComponent },
-  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: 'profile', component: UserProfilePageComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/books', pathMatch: 'full'},
 
   {
     path: 'admin', component: AdminNavigationComponent,
-    children: routesAdmin
+    children: routesAdmin, canActivate: [AdminGuard]
   }
 ];
 

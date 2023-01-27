@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private jwtService: JwtService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -36,6 +37,10 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           this.authService.storeToken(res.token);
           this.authService._isLoggedIn$.next(true);
+
+          const decodedToken: any = this.jwtService.decodeToken(res.token)
+          this.authService._isRoleAdmin$.next(decodedToken.Role);
+
           this.router.navigate([''])
         },
           (err: any) => {

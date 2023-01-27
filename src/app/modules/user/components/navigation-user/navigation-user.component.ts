@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { JwtService } from 'src/app/services/jwt.service';
 
 @Component({
   selector: 'app-navigation-user',
@@ -9,12 +11,20 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavigationUserComponent implements OnInit {
 
-  isLoggedIn = false
+  isLoggedIn = false;
+  isAdmin: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
+    this.authService.RoleAdmin$.subscribe((res: any) => {
+      res === "Admin" ?
+        this.isAdmin = true :
+        this.isAdmin = false
+      }
+    );
   }
 
   logout() {

@@ -12,12 +12,24 @@ export class AuthService {
     _isLoggedIn$ = new BehaviorSubject<boolean>(false);
     isLoggedIn$ = this._isLoggedIn$.asObservable();
 
+    _isRoleAdmin$ = new BehaviorSubject<string>("User")
+    RoleAdmin$ = this._isRoleAdmin$.asObservable()
+
     constructor(
         private http: HttpClient,
-        private router: Router) {
+        private router: Router,
+        private jwtService: JwtService) {
 
         const token = this.getToken()
         this._isLoggedIn$.next(!!token)
+        
+        if(token){
+            const decodedToken = this.jwtService.decodeToken(token);
+
+            this._isRoleAdmin$.next(decodedToken.Role)
+            
+        }
+        
     }
 
     signUp(userObj: any) {

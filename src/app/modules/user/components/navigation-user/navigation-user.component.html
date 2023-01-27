@@ -6,7 +6,7 @@
         <div class="auth">
             <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
             <li *ngIf="!isLoggedIn"><a routerLink="/signup">Signup</a></li>
-            <li *ngIf="isLoggedIn"><a routerLink="/admin">Admin</a></li>
+            <li *ngIf="isLoggedIn && isAdmin"><a routerLink="/admin">Admin</a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/profile">Profile</a></li>
             <li *ngIf="isLoggedIn"><a (click)="logout()">Log out</a></li>
         </div>
