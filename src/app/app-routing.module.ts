@@ -20,7 +20,8 @@ const routes: Routes = [
 
   {
     path: 'admin', component: AdminNavigationComponent,
-    loadChildren: () => import('./modules/admin/admin.module').then(s => s.AdminModule)
+    loadChildren: () => import('./modules/admin/admin.module').then(s => s.AdminModule),
+    canActivate: [AdminGuard]
   }
 ];
 
