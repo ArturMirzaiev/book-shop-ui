@@ -14,7 +14,7 @@
       </div>
 
       <div class="authors">
-        <a href="">G.A. Cherchill, G.A. Cherchill</a>
+        <a *ngFor="let author of authors" routerLink="/books/author/{{author.id}}" >{{author.fullName}}</a>
         <label> 1985</label>
       </div>
 
@@ -28,7 +28,7 @@
         </label>
         <br>
         <label>
-          <em>Categories</em>: Poem, Comedy, Romance, History
+          <em>Categories: </em><label *ngFor="let category of categories">{{category.name}} </label>
         </label>
       </div>
 
