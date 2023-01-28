@@ -5,23 +5,20 @@ import { AdminNavigationComponent } from './components/admin-navigation/admin-na
 import { RouterModule } from '@angular/router';
 import { AddBookComponent } from './pages/add-book/add-book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { EditBookModalComponent } from './components/modals/edit-book-modal/edit-book-modal.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
 import { FilterAuthorPipe } from '../user/pipes/filter-author.pipe';
 import { FilterCategoryPipe } from '../user/pipes/filter-category.pipe';
 import { FilterBookPipe } from '../user/pipes/filter-book.pipe';
 import { WarnModalComponent } from './components/modals/warn-modal/warn-modal.component';
+import { AdmingRoutingModule } from './admin-routing.module';
 
 @NgModule({
     declarations: [
         FindPageComponent,
         AddBookComponent,
-        AdminNavigationComponent,
         EditBookModalComponent,
+        AdminNavigationComponent,
         BookItemComponent,
         WarnModalComponent,
         FilterAuthorPipe,
@@ -32,11 +29,8 @@ import { WarnModalComponent } from './components/modals/warn-modal/warn-modal.co
         CommonModule,
         RouterModule,
         ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        FormsModule
+        FormsModule,
+        AdmingRoutingModule
     ]
 })
 export class AdminModule { }

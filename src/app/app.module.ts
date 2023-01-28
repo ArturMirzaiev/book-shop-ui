@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserModule } from './modules/user/user.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminModule } from './modules/admin/admin.module';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { UserModule } from './modules/user/user.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     UserModule,
     AdminModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [AuthService,
     {

@@ -14,6 +14,7 @@ export class AuthService {
 
     _isRoleAdmin$ = new BehaviorSubject<string>("User")
     RoleAdmin$ = this._isRoleAdmin$.asObservable()
+    userRole = '';
 
     constructor(
         private http: HttpClient,
@@ -24,10 +25,10 @@ export class AuthService {
         this._isLoggedIn$.next(!!token)
         
         if(token){
-            const decodedToken = this.jwtService.decodeToken(token);
 
+            const decodedToken = this.jwtService.decodeToken(token);
             this._isRoleAdmin$.next(decodedToken.Role)
-            
+            this.userRole = decodedToken.Role;
         }
         
     }

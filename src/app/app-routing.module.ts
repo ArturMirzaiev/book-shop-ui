@@ -10,23 +10,17 @@ import { SignupComponent } from './modules/user/components/signup/signup.compone
 import { UserPageComponent } from './modules/user/pages/user-page/user-page.component';
 import { UserProfilePageComponent } from './modules/user/pages/user-profile-page/user-profile-page.component';
 
-const routesAdmin: Routes = [
-  { path: 'add_book', component: AddBookComponent },
-  { path: 'find_book', component: FindPageComponent },
-  { path: '', redirectTo: '/admin/find_book', pathMatch: 'full' }
-]
-
 const routes: Routes = [
   { path: 'books', component: UserPageComponent },
   { path: 'books/:id', component: UserPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: UserProfilePageComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/books', pathMatch: 'full'},
+  { path: '', redirectTo: '/books', pathMatch: 'full' },
 
   {
     path: 'admin', component: AdminNavigationComponent,
-    children: routesAdmin, canActivate: [AdminGuard]
+    loadChildren: () => import('./modules/admin/admin.module').then(s => s.AdminModule)
   }
 ];
 
