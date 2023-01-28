@@ -7,14 +7,16 @@ import { AddBookComponent } from './modules/admin/pages/add-book/add-book.compon
 import { FindPageComponent } from './modules/admin/pages/find-page/find-page.component';
 import { LoginComponent } from './modules/user/components/login/login.component';
 import { SignupComponent } from './modules/user/components/signup/signup.component';
+import { BookPageComponent } from './modules/user/pages/book-page/book-page.component';
 import { UserPageComponent } from './modules/user/pages/user-page/user-page.component';
 import { UserProfilePageComponent } from './modules/user/pages/user-profile-page/user-profile-page.component';
 
 const routes: Routes = [
   { path: 'books', component: UserPageComponent },
-  { path: 'books/:id', component: UserPageComponent },
+  { path: 'books/category/:id', component: UserPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'books/book/:id', component: BookPageComponent },
   { path: 'profile', component: UserProfilePageComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/books', pathMatch: 'full' },
 

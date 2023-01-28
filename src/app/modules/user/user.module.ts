@@ -12,6 +12,7 @@ import { RouteBookPipe } from './pipes/route-book.pipe';
 import { CategoryPanelComponent } from './components/category-panel/category-panel.component';
 import { FilterBook2Pipe } from './pipes/filter-book2.pipe';
 import { SortSelectPipe } from './pipes/sort-select.pipe';
+import { BookPageComponent } from './pages/book-page/book-page.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { SortSelectPipe } from './pipes/sort-select.pipe';
     BookItemComponent,
     UserProfilePageComponent,
     CategoryPanelComponent,
+    BookPageComponent,
     RouteBookPipe,
     FilterBook2Pipe,
     SortSelectPipe

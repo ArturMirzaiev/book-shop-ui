@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
               this.loginForm.reset()
             }
             else {  
-              alert("Something is wrong. Try again.")
+              alert("Something went wrong. Try again.")
             }
           })
     }

@@ -1,0 +1,51 @@
+<app-navigation-user></app-navigation-user>
+
+<div class="wrapper">
+
+  <div class="container">
+    <div class="image-content">
+      <img src={{book.imageUrl}} alt="">
+    </div>
+
+    <div class="main-content">
+
+      <div class="title">
+        <p>{{book.title}}</p>
+      </div>
+
+      <div class="authors">
+        <a href="">G.A. Cherchill, G.A. Cherchill</a>
+        <label> 1985</label>
+      </div>
+
+      <div class="price">
+        <p>{{book.price | currency }}</p>
+      </div>
+
+      <div class="bool-detail">
+        <label>
+          <em>Available in stock in quantity</em>: {{book.quantity}} pcs.
+        </label>
+        <br>
+        <label>
+          <em>Categories</em>: Poem, Comedy, Romance, History
+        </label>
+      </div>
+
+      <div class="buttons">
+        <button class="buy">BUY</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="footer-content">
+    <div class="description">
+      <p>Description</p>
+      <hr />
+      <label>{{book.description}}</label>
+    </div>
+  </div>
+
+</div>

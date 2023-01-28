@@ -9,7 +9,6 @@ export class JwtService {
     constructor() { }
 
     decodeToken(token) {
-        const jwt: any = jwtDecode(token);
-        return jwt;
+        return jwtDecode(token) as any;
     }
 }

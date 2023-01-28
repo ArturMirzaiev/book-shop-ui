@@ -37,7 +37,7 @@
             <input type="text" class="searchInput" placeholder="Enter a book title..." [(ngModel)]="searchBook">
 
             <select name="" id="" class="select" [(ngModel)]="selected">
-                <option value="default">default</option>
+                <option value="none">none</option>
                 <option value="a-z">a-z</option>
                 <option value="z-a">z-a</option>
                 <option value="low-high">low-high</option>
@@ -48,7 +48,8 @@
 
         <div class="books-container">
 
-            <div class="books-wrapper">
+            <div class="books-wrapper" 
+                *ngIf="!isLoadingContent; else loadingContent">
                 <app-book-item
                     *ngFor="let book of books 
                     | routeBook:routeCategoryId 
@@ -58,12 +59,13 @@
                 </app-book-item>
             </div>
 
-            <div>
+            <div *ngIf="!isLoadingContent">
                 <h3>Found resuls: {{filterMetadata.count}}</h3>
-                <div *ngIf="isLoadingContent">
-                    <h3>Loading...</h3>
-                </div>
             </div>
+
+            <ng-template #loadingContent >
+                <h3>Loading...</h3>
+            </ng-template>
 
         </div>
     </div>

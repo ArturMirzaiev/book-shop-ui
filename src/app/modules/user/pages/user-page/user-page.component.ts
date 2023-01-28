@@ -1,7 +1,7 @@
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IBook } from 'src/app/models/ibook';
 import { ICategory } from 'src/app/models/icategory';
 import { BookService } from 'src/app/services/book.service';
@@ -22,7 +22,7 @@ export class UserPageComponent implements OnInit {
 
   routeCategoryId = ''
   searchBook = ''
-  selected = 'default'
+  selected = 'none'
   
   filterMetadata = { count: 0 }
 
@@ -33,8 +33,9 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe((res: { id: string }) => {
-      this.routeCategoryId = res.id
+    this.route.params
+      .subscribe((res: { id: string }) => {
+        this.routeCategoryId = res.id
     })
 
     this.bookService.getBooks()
@@ -42,7 +43,7 @@ export class UserPageComponent implements OnInit {
         this.isLoadingContent = true;
         this.books = res
         this.isLoadingContent = false;
-      })
+    })  
 
     this.categoryService.getCategories()
       .subscribe((res: ICategory[]) => {

@@ -9,8 +9,8 @@ export class SortSelectPipe implements PipeTransform {
   transform(items: any, selected: any): any {
 
     switch (selected) {
-      case "default":
-        return items.sort();  
+      case "none":
+        return items.sort((a, b)=> a.quantity - b.quantity);  
       case "a-z":
         return items.sort((a, b) => a.title.localeCompare(b.title))
       case "z-a":
