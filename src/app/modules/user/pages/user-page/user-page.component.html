@@ -48,14 +48,11 @@
 
         <div class="books-container">
 
-            <div class="books-wrapper" 
-                *ngIf="!isLoadingContent; else loadingContent">
-                <app-book-item
-                    *ngFor="let book of books 
+            <div class="books-wrapper" *ngIf="!isLoadingContent; else loadingContent">
+                <app-book-item *ngFor="let book of books 
                     | routeBook:routeCategoryId 
                     | filterBook2:searchBook:filterMetadata
-                    | sortSelect:selected"
-                    [book]="book">
+                    | sortSelect:selected" [book]="book">
                 </app-book-item>
             </div>
 
@@ -63,7 +60,7 @@
                 <h3>Found resuls: {{filterMetadata.count}}</h3>
             </div>
 
-            <ng-template #loadingContent >
+            <ng-template #loadingContent>
                 <h3>Loading...</h3>
             </ng-template>
 

@@ -9,14 +9,6 @@
     justify-content: space-between;
 }
 
-.image-book:hover{
-    -webkit-filter: brightness(70%);
-	-moz-filter: brightness(70%);
-	-o-filter: brightness(70%);
-	-ms-filter: brightness(70%);
-	filter: brightness(70%);
-}
-
 .image-book{
     height: 78%;
     margin: 0 0 10px;

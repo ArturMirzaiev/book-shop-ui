@@ -8,7 +8,12 @@
             <li *ngIf="!isLoggedIn"><a routerLink="/signup">Signup</a></li>
             <li *ngIf="isLoggedIn && isAdmin"><a routerLink="/admin">Admin</a></li>
             <li *ngIf="isLoggedIn"><a routerLink="/profile">Profile</a></li>
+            <button class="cart" *ngIf="isLoggedIn" (click)="modal = !modal" ></button>
             <li *ngIf="isLoggedIn"><a (click)="logout()">Log out</a></li>
         </div>
     </ul>
+    <app-basket-modal 
+        *ngIf="modal" 
+        (close)="modal = false">
+    </app-basket-modal>
 </nav>

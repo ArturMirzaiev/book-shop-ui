@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,6 +10,8 @@ import { JwtService } from 'src/app/services/jwt.service';
   styleUrls: ['./navigation-user.component.css']
 })
 export class NavigationUserComponent implements OnInit {
+
+  modal = false;  
 
   isLoggedIn = false;
   isAdmin: boolean = false;
@@ -29,6 +31,10 @@ export class NavigationUserComponent implements OnInit {
 
   logout() {
     this.authService.signOut();
+  }
+
+  openCartModal(){
+
   }
 
 }
